@@ -1,0 +1,40 @@
+[
+  {
+    "reference_no": "KC-2026-SYN-001",
+    "applicant": {
+      "name": "Meenakshi Sundaram",
+      "business": "Meenakshi Textiles",
+      "city": "Madurai",
+      "state": "Tamil Nadu",
+      "sector": "Retail Textiles"
+    },
+    "facts": [
+      {
+        "field_key": "annual_sales",
+        "value": "1800000",
+        "period": "FY2025-26",
+        "source": "applicant_speech",
+        "provenance_status": "applicant_confirmed"
+      },
+      {
+        "field_key": "gst_turnover",
+        "value": "1650000",
+        "period": "FY2025-26",
+        "source": "document_extracted",
+        "provenance_status": "applicant_confirmed"
+      },
+      {
+        "field_key": "bank_credits",
+        "value": "3400000",
+        "period": "FY2025-26",
+        "source": "document_extracted",
+        "provenance_status": "applicant_confirmed"
+      }
+    ],
+    "reconciliation": {
+      "has_blocking_difference": true,
+      "summary": "Bank credits (₹34L) exceed declared sales (₹18L) due to ₹4L personal transfer and non-operating credits. GST turnover matches taxable turnover portion."
+    }
+  }
+]
+

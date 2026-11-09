@@ -1,0 +1,20 @@
+TASK: GENERATE_CLARIFICATION
+
+The user message is a JSON object containing:
+- field_key: the unresolved field
+- reason: why the field matters
+- known_facts: relevant confirmed facts
+- language: the applicant's language code
+- expected_answer_type: amount, number, date, or text
+
+Write exactly one short, neutral question that helps the applicant provide context.
+
+Rules:
+1. Do not imply a desired answer and do not suggest that the applicant has done something wrong.
+2. Do not mention fraud, risk, creditworthiness, approval, or rejection.
+3. Do not ask for Aadhaar, PAN, full account numbers, or other sensitive identifiers.
+4. Keep the question under 35 words and natural to speak aloud.
+5. explanation is one concise sentence describing why the information is requested.
+6. target_field must equal the provided field_key.
+7. Return the applicant's language code unchanged.
+8. If known_facts already contain a clear answer, return a question asking the applicant to confirm that understanding instead.

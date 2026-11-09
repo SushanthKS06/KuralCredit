@@ -1,0 +1,42 @@
+[
+  {
+    "id": "app-synthetic-001",
+    "applicant_name": "Meenakshi Sundaram (Synthetic)",
+    "business_name": "Meenakshi Handlooms & Textiles (Synthetic)",
+    "language": "ta-IN",
+    "voice": "Trisha",
+    "consent_accepted": true,
+    "declared_sales": "1800000",
+    "declared_gst_turnover": "1650000",
+    "bank_statement_credits": "3400000",
+    "clarification_notes": "₹4,00,000 personal transfer from savings account. Remaining variance is customer cash sales recorded in physical sales register.",
+    "period": "FY2025-26"
+  },
+  {
+    "id": "app-synthetic-002",
+    "applicant_name": "Ramesh Kumar (Synthetic)",
+    "business_name": "Sri Krishna Auto Spares (Synthetic)",
+    "language": "en-IN",
+    "voice": "Kaveri",
+    "consent_accepted": true,
+    "declared_sales": "2500000",
+    "declared_gst_turnover": "2400000",
+    "bank_statement_credits": "2900000",
+    "clarification_notes": "₹5,00,000 was business loan disbursement from NBFC credited in Q2.",
+    "period": "FY2025-26"
+  },
+  {
+    "id": "app-synthetic-003",
+    "applicant_name": "Selvaraj Murugan (Synthetic)",
+    "business_name": "Annamalai Agro Supplies (Synthetic)",
+    "language": "ta-IN",
+    "voice": "Trisha",
+    "consent_accepted": true,
+    "declared_sales": "1200000",
+    "declared_gst_turnover": "1200000",
+    "bank_statement_credits": "1250000",
+    "clarification_notes": "Small timing difference in month-end clearing deposits.",
+    "period": "FY2025-26"
+  }
+]
+

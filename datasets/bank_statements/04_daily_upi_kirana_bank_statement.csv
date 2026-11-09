@@ -1,0 +1,35 @@
+Date,Value Date,Description,Ref No,Debit,Credit,Balance
+02/04/2025,02/04/2025,PhonePe QR merchant daily settlement,PPR99201920,,130000.00,130000.00
+07/04/2025,07/04/2025,GooglePay Business UPI settlement,GPAY8820192,,130000.00,260000.00
+15/04/2025,15/04/2025,Cash Deposit Machine (CDM) counter cash deposit,CDM001928,,180000.00,440000.00
+22/04/2025,22/04/2025,Hindustan Unilever distributor payment,NEFT8819201,240000.00,,200000.00
+02/05/2025,02/05/2025,PhonePe QR merchant weekly settlement,PPR99202110,,150000.00,350000.00
+12/05/2025,12/05/2025,Paytm Soundbox QR batch collection,PYTM7720192,,120000.00,470000.00
+20/05/2025,20/05/2025,CDM branch cash deposit weekend collection,CDM001955,,190000.00,660000.00
+28/05/2025,28/05/2025,ITC Limited FMCG supply payment,CHQ449201,210000.00,,450000.00
+03/06/2025,03/06/2025,GooglePay Business UPI settlement,GPAY8820299,,160000.00,610000.00
+16/06/2025,16/06/2025,PhonePe QR merchant settlement,PPR99202450,,145000.00,755000.00
+25/06/2025,25/06/2025,Aavin Milk & Dairy distributor weekly payment,NEFT8819340,85000.00,,670000.00
+04/07/2025,04/07/2025,CDM counter cash sales deposit,CDM002011,,200000.00,870000.00
+18/07/2025,18/07/2025,UPI QR multi-bank settlement aggregate,UPI99201948,,155000.00,1025000.00
+29/07/2025,29/07/2025,Nestle & Britannia distributor payment,CHQ449202,190000.00,,835000.00
+05/08/2025,05/08/2025,PhonePe QR merchant settlement,PPR99202890,,165000.00,1000000.00
+19/08/2025,19/08/2025,CDM cash deposit - Independence day sale,CDM002088,,220000.00,1220000.00
+28/08/2025,28/08/2025,Shop electricity & refrigeration AMC,NEFT8819490,45000.00,,1175000.00
+04/09/2025,04/09/2025,GooglePay Business UPI settlement,GPAY8820410,,175000.00,1350000.00
+18/09/2025,18/09/2025,CDM cash deposit - Vinayagar Chaturthi sales,CDM002144,,210000.00,1560000.00
+29/09/2025,29/09/2025,Tata Consumer Products distributor debit,CHQ449203,160000.00,,1400000.00
+06/10/2025,06/10/2025,PhonePe QR festive batch collection,PPR99203310,,190000.00,1590000.00
+19/10/2025,19/10/2025,Deepavali grocery pre-orders UPI batch,UPI99202811,,210000.00,1800000.00
+25/10/2025,25/10/2025,CDM cash deposit festive counter sales,CDM002201,,260000.00,2060000.00
+05/11/2025,05/11/2025,Godrej Consumer Products inventory billing,NEFT8819610,180000.00,,1880000.00
+18/11/2025,18/11/2025,GooglePay Business UPI settlement,GPAY8820550,,170000.00,2050000.00
+04/12/2025,04/12/2025,PhonePe QR merchant settlement,PPR99203890,,160000.00,2210000.00
+19/12/2025,19/12/2025,CDM cash deposit - Monthly grocery accounts,CDM002299,,195000.00,2405000.00
+06/01/2026,06/01/2026,Pongal harvest festival grocery sales UPI,UPI99203410,,180000.00,2585000.00
+19/01/2026,19/01/2026,CDM counter cash deposit - Festive collection,CDM002360,,220000.00,2805000.00
+05/02/2026,05/02/2026,Wholesale rice bag procurement - Thanjavur mill,RTGS002810,320000.00,,2485000.00
+16/02/2026,16/02/2026,GooglePay Business UPI settlement,GPAY8820690,,150000.00,2635000.00
+03/03/2026,03/03/2026,PhonePe QR merchant settlement,PPR99204310,,165000.00,2800000.00
+18/03/2026,18/03/2026,CDM cash deposit year-end stock clearance,CDM002440,,185000.00,2985000.00
+28/03/2026,28/03/2026,UPI QR merchant closing settlement,UPI99204190,,85000.00,3070000.00

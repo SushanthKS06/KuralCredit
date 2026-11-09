@@ -1,0 +1,96 @@
+.tableCard {
+  border: 1px solid var(--border-default);
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: var(--space-5);
+}
+
+.header {
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-neutral-50);
+  border-bottom: 1px solid var(--border-default);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.th {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-neutral-50);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.td {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+  transition: background var(--transition-fast);
+}
+
+.table tbody tr:hover td {
+  background: var(--color-neutral-50);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.amount {
+  font-family: var(--font-mono);
+  font-weight: var(--weight-semibold);
+  color: var(--color-brand-800);
+}
+
+.editRow {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.editInput {
+  padding: var(--space-1) var(--space-2);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  width: 140px;
+  background: var(--surface-card);
+  color: var(--text-primary);
+}
+
+.editInput:focus {
+  outline: none;
+  border-color: var(--color-brand-500);
+}
+
+.empty {
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}

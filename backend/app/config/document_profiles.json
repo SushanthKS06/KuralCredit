@@ -1,0 +1,51 @@
+{
+  "version": "2026-02-document-profiles-v1",
+  "profiles": {
+    "bank_statement": {
+      "label": "Bank statement",
+      "document_type": "bank_statement",
+      "field_key": "bank_credits",
+      "measure_type": "bank_credit",
+      "source_type": "bank_statement",
+      "columns": {
+        "date": ["date", "txn date", "transaction date", "value date", "posting date"],
+        "description": ["description", "narration", "particulars", "details", "remarks"],
+        "credit": ["credit", "deposit", "deposit amount", "credit amount", "credit (inr)"],
+        "debit": ["debit", "withdrawal", "withdrawal amount", "debit amount", "debit (inr)"],
+        "amount": ["amount", "transaction amount"]
+      },
+      "date_formats": ["%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d-%b-%Y", "%d %b %Y"],
+      "aggregation": "sum_credit_rows",
+      "notes": "Credits are recorded as bank credits, not revenue. Transfers, refunds, loan proceeds and non-business credits may be included."
+    },
+    "gst_summary": {
+      "label": "GST summary",
+      "document_type": "gst_summary",
+      "field_key": "gst_turnover",
+      "measure_type": "gst_turnover",
+      "source_type": "GST_document",
+      "columns": {
+        "period": ["period", "month", "return period", "tax period", "gst period"],
+        "turnover": ["taxable turnover", "taxable value", "turnover", "total taxable value", "taxable amount"]
+      },
+      "aggregation": "sum_period_rows",
+      "notes": "GST turnover is a separate measure from total sales and bank credits."
+    },
+    "sales_register": {
+      "label": "Sales register",
+      "document_type": "sales_register",
+      "field_key": "cash_sales",
+      "measure_type": "cash_sales",
+      "source_type": "sales_register",
+      "columns": {
+        "date": ["date", "invoice date", "bill date"],
+        "invoice": ["invoice", "invoice no", "bill no", "invoice number"],
+        "amount": ["amount", "sales amount", "value", "invoice amount", "total"],
+        "payment_mode": ["payment mode", "mode", "payment", "payment type", "paid by"]
+      },
+      "date_formats": ["%d/%m/%Y", "%d-%m-%Y", "%Y-%m-%d", "%d-%b-%Y"],
+      "aggregation": "sum_cash_sales",
+      "notes": "Cash sales may not appear in bank records. The register is applicant-provided evidence and is not independently verified."
+    }
+  }
+}

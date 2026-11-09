@@ -1,0 +1,133 @@
+:root {
+  --color-brand-900: #0a2422;
+  --color-brand-800: #103c3a;
+  --color-brand-700: #165450;
+  --color-brand-600: #1d6b66;
+  --color-brand-500: #23837d;
+  --color-brand-400: #2fa39c;
+  --color-brand-300: #5bbfba;
+  --color-brand-200: #9adbd7;
+  --color-brand-100: #d0f0ee;
+  --color-brand-50:  #edfaf9;
+
+  --color-neutral-950: #0d0f0f;
+  --color-neutral-900: #1a1d1d;
+  --color-neutral-800: #2c3030;
+  --color-neutral-700: #3f4444;
+  --color-neutral-600: #545a5a;
+  --color-neutral-500: #6b7272;
+  --color-neutral-400: #8c9494;
+  --color-neutral-300: #b0b8b8;
+  --color-neutral-200: #d0d6d6;
+  --color-neutral-100: #e8ecec;
+  --color-neutral-50:  #f4f6f6;
+  --color-neutral-0:   #ffffff;
+
+  --color-success-700: #166534;
+  --color-success-500: #22c55e;
+  --color-success-100: #dcfce7;
+  --color-warning-700: #92400e;
+  --color-warning-500: #f59e0b;
+  --color-warning-100: #fef3c7;
+  --color-danger-700:  #991b1b;
+  --color-danger-500:  #ef4444;
+  --color-danger-100:  #fee2e2;
+  --color-info-700:    #1e40af;
+  --color-info-500:    #3b82f6;
+  --color-info-100:    #dbeafe;
+
+  --surface-page:    var(--color-neutral-50);
+  --surface-card:    var(--color-neutral-0);
+  --surface-sidebar: var(--color-brand-900);
+  --surface-header:  var(--color-brand-800);
+  --surface-input:   var(--color-neutral-0);
+  --surface-hover:   var(--color-neutral-50);
+
+  --text-primary:   var(--color-neutral-900);
+  --text-secondary: var(--color-neutral-600);
+  --text-muted:     var(--color-neutral-400);
+  --text-inverse:   var(--color-neutral-0);
+  --text-brand:     var(--color-brand-700);
+  --text-danger:    var(--color-danger-700);
+  --text-success:   var(--color-success-700);
+  --text-warning:   var(--color-warning-700);
+
+  --border-subtle:  var(--color-neutral-100);
+  --border-default: var(--color-neutral-200);
+  --border-strong:  var(--color-neutral-300);
+  --border-brand:   var(--color-brand-400);
+  --border-danger:  var(--color-danger-500);
+
+  --focus-ring: 0 0 0 3px var(--color-brand-300);
+
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+  --text-3xl:  1.875rem;
+
+  --weight-normal:   400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  --leading-tight:   1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.625;
+
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+
+  --sidebar-width: 240px;
+  --header-height: 56px;
+  --content-max:   1200px;
+
+  --transition-fast:   100ms ease;
+  --transition-normal: 200ms ease;
+
+  /* ── Semantic aliases used throughout components ── */
+  /* These map shorthand names to the full token scale  */
+  --surface:        var(--surface-card);
+  --surface-muted:  var(--color-neutral-50);
+  --border:         var(--border-default);
+  --primary:        var(--color-brand-600);
+  --primary-hover:  var(--color-brand-700);
+  --success:        var(--color-success-500);
+  --success-subtle: var(--color-success-100);
+  --danger:         var(--color-danger-500);
+  --danger-subtle:  var(--color-danger-100);
+  --warning:        var(--color-warning-500);
+  --warning-subtle: var(--color-warning-100);
+  --info:           var(--color-info-500);
+  --info-subtle:    var(--color-info-100);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast:   0ms;
+    --transition-normal: 0ms;
+  }
+}

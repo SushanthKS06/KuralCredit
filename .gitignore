@@ -1,0 +1,158 @@
+# ==============================================================================
+# KuralCredit - Git Ignore Configuration
+# Covers: Python (FastAPI/Pydantic/Alembic), Node (React/Vite/TS), SQLite, OS/IDEs
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Secrets, Credentials & Local Environment
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+credentials.json
+secrets.json
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+
+# ------------------------------------------------------------------------------
+# 2. Python & Bytecode
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing, Linting & Type-checking caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pytype/
+.pyre/
+.pyright/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+nosetests.xml
+
+# ------------------------------------------------------------------------------
+# 3. Node.js & Frontend (Vite, TypeScript, Vitest)
+# ------------------------------------------------------------------------------
+node_modules/
+*/node_modules/
+dist/
+*/dist/
+.vite/
+*/.vite/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.eslintcache
+.stylelintcache
+
+# ------------------------------------------------------------------------------
+# 4. Databases & SQLite Artifacts
+# ------------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+kuralcredit.db
+backend/kuralcredit.db
+smoke_kuralcredit.db
+test_temp.db
+test_tmp.db
+
+# ------------------------------------------------------------------------------
+# 5. Local Uploads & Ephemeral Audio Storage
+# ------------------------------------------------------------------------------
+uploads/
+smoke_uploads/
+storage/
+backend/uploads/
+backend/audio/
+backend/exports/
+*.wav
+*.mp3
+*.ogg
+*.flac
+*.aac
+*.m4a
+
+# ------------------------------------------------------------------------------
+# 6. Release Builds, Benchmarks & End-to-End Test Artifacts
+# ------------------------------------------------------------------------------
+release/
+.benchmarks/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# ------------------------------------------------------------------------------
+# 7. Operating System & Filesystem Junk
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ------------------------------------------------------------------------------
+# 8. Logs
+# ------------------------------------------------------------------------------
+*.log
+logs/
+*.log.*
+
+# ------------------------------------------------------------------------------
+# 9. IDEs & Editors
+# ------------------------------------------------------------------------------
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~

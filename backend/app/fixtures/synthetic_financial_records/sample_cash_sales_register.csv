@@ -1,0 +1,14 @@
+Date,Invoice No,Customer / Description,Payment Mode,Amount (INR)
+05/04/2025,INV-2025-001,Counter Cash Sales - Sarees,Cash,50000.00
+12/05/2025,INV-2025-002,Counter Cash Sales - Dhotis,Cash,75000.00
+18/06/2025,INV-2025-003,Counter Cash Sales - Fabrics,Cash,60000.00
+21/07/2025,INV-2025-004,Festival Advance Booking,Cash,80000.00
+09/08/2025,INV-2025-005,Counter Cash Sales,Cash,65000.00
+17/09/2025,INV-2025-006,Deepavali Early Orders,Cash,70000.00
+23/10/2025,INV-2025-007,Festival Season Counter Sales,Cash,50000.00
+11/11/2025,INV-2025-008,Wedding Orders Cash,Cash,90000.00
+19/12/2025,INV-2025-009,Pongal Collection Booking,Cash,60000.00
+25/01/2026,INV-2025-010,Counter Cash Sales,Cash,55000.00
+14/02/2026,INV-2025-011,Counter Cash Sales,Cash,70000.00
+18/03/2026,INV-2025-012,Year-End Clearance Cash,Cash,50000.00
+Total FY2025-26,,Total Cash Sales Register,,775000.00

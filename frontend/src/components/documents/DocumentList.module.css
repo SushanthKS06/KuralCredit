@@ -1,0 +1,64 @@
+.listCard {
+  border: 1px solid var(--border-default);
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: var(--space-5);
+}
+
+.header {
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-neutral-50);
+  border-bottom: 1px solid var(--border-default);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--transition-fast);
+}
+
+.item:hover {
+  background: var(--color-neutral-50);
+}
+
+.item:last-child {
+  border-bottom: none;
+}
+
+.fileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.fileName {
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+}
+
+.fileMeta {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.empty {
+  padding: var(--space-6);
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}

@@ -1,0 +1,8 @@
+{"id": "eval-001", "language": "en-IN", "text": "Our last year sales were 18 lakh rupees and GST turnover was 16 lakh 50 thousand.", "expected_facts": {"annual_sales": "1800000", "gst_turnover": "1650000"}, "category": "clean_declared_values"}
+{"id": "eval-002", "language": "ta-IN", "text": "எங்க கடை சென்ற வருட விற்பனை பதினெட்டு லட்சம் ரூபாய், ஜிஎஸ்டி விற்றுமுதல் பதினாறு லட்சம் ஐம்பதாயிரம்.", "expected_facts": {"annual_sales": "1800000", "gst_turnover": "1650000"}, "category": "tamil_script_amounts"}
+{"id": "eval-003", "language": "ta-IN", "text": "Enoda kadai sales last year 18 lakhs vandhuchu. GST turnover 16.5 lakhs file pannirukkom.", "expected_facts": {"annual_sales": "1800000", "gst_turnover": "1650000"}, "category": "tanglish_code_mixed"}
+{"id": "eval-004", "language": "en-IN", "text": "Total turnover in FY2025 was Rs 1.2 crore and bank credits were 1,45,00,000.", "expected_facts": {"annual_sales": "12000000", "bank_credits": "14500000"}, "category": "crore_and_commas"}
+{"id": "eval-005", "language": "en-IN", "text": "Bank statement has 4 lakh personal transfer from my savings and customer cash sales recorded in register.", "expected_clarification": "non_business_credits_and_cash", "category": "clarification_rationale"}
+{"id": "eval-006", "language": "ta-IN", "text": "Bank credit-la 4 lakh personal savings transfer irukku, mathapadi cash sales physical register-la maintain panrom.", "expected_clarification": "non_business_credits_and_cash", "category": "tanglish_clarification"}
+{"id": "eval-007", "language": "en-IN", "text": "I am not sure about the exact quarterly GST figure right now, I need to check with my auditor.", "expected_action": "defer_or_unresolved", "category": "uncertainty_handling"}
+

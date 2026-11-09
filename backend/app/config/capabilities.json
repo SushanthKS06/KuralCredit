@@ -1,0 +1,126 @@
+{
+  "version": "2026-02-gnani-verified",
+  "verified_at": "2026-02-07",
+  "source_urls": [
+    "https://docs.gnani.ai/api/STT/languages",
+    "https://docs.gnani.ai/api/STT/speech-to-text",
+    "https://docs.gnani.ai/api/TTS/available-voices",
+    "https://docs.gnani.ai/api/TTS/tts-inference"
+  ],
+  "stt": {
+    "models": {
+      "prisma-v2.5": {
+        "max_audio_seconds": 30,
+        "formats": ["wav", "mp3", "ogg", "flac", "aac", "m4a"],
+        "auto_language": null
+      },
+      "prisma-v3.0": {
+        "max_audio_seconds": 30,
+        "formats": ["wav", "mp3", "ogg", "flac", "aac", "m4a"],
+        "auto_language": "indic-auto"
+      }
+    },
+    "languages": [
+      {"code": "bn-IN", "name": "Bengali", "native_name": "বাংলা", "script": "Bengali"},
+      {"code": "en-IN", "name": "English (India)", "native_name": "English", "script": "Latin"},
+      {"code": "gu-IN", "name": "Gujarati", "native_name": "ગુજરાતી", "script": "Gujarati"},
+      {"code": "hi-IN", "name": "Hindi", "native_name": "हिन्दी", "script": "Devanagari"},
+      {"code": "kn-IN", "name": "Kannada", "native_name": "ಕನ್ನಡ", "script": "Kannada"},
+      {"code": "ml-IN", "name": "Malayalam", "native_name": "മലയാളം", "script": "Malayalam"},
+      {"code": "mr-IN", "name": "Marathi", "native_name": "मराठी", "script": "Devanagari"},
+      {"code": "pa-IN", "name": "Punjabi", "native_name": "ਪੰਜਾਬੀ", "script": "Gurmukhi"},
+      {"code": "ta-IN", "name": "Tamil", "native_name": "தமிழ்", "script": "Tamil"},
+      {"code": "te-IN", "name": "Telugu", "native_name": "తెలుగు", "script": "Telugu"}
+    ]
+  },
+  "tts": {
+    "models": {
+      "timbre-v2.5": {"all_languages": false, "audio_tags": false},
+      "timbre-v3.0": {"all_languages": true, "audio_tags": true}
+    },
+    "languages": [
+      {"code": "bn-IN", "name": "Bengali"},
+      {"code": "en-IN", "name": "English (India)"},
+      {"code": "gu-IN", "name": "Gujarati"},
+      {"code": "hi-IN", "name": "Hindi"},
+      {"code": "hi-en", "name": "Hinglish"},
+      {"code": "kn-IN", "name": "Kannada"},
+      {"code": "ml-IN", "name": "Malayalam"},
+      {"code": "mr-IN", "name": "Marathi"},
+      {"code": "pa-IN", "name": "Punjabi"},
+      {"code": "ta-IN", "name": "Tamil"},
+      {"code": "te-IN", "name": "Telugu"}
+    ],
+    "voices_v2_5": [
+      {"name": "Kaveri", "gender": "Female", "preferred_language": "en-IN", "persona": "Professional"},
+      {"name": "Trupti", "gender": "Female", "preferred_language": "en-IN", "persona": "Professional"},
+      {"name": "Devika", "gender": "Female", "preferred_language": "en-IN", "persona": "Professional"},
+      {"name": "Pranav", "gender": "Male", "preferred_language": "en-IN", "persona": "Friendly"},
+      {"name": "Shlok", "gender": "Male", "preferred_language": "en-IN", "persona": "Conversational"},
+      {"name": "Girish", "gender": "Male", "preferred_language": "en-IN", "persona": "Expressive"},
+      {"name": "Nalini", "gender": "Female", "preferred_language": "hi-IN", "persona": "Friendly"},
+      {"name": "Bhavna", "gender": "Female", "preferred_language": "hi-IN", "persona": "Friendly"},
+      {"name": "Yashvi", "gender": "Female", "preferred_language": "hi-IN", "persona": "Warm"},
+      {"name": "Urmila", "gender": "Female", "preferred_language": "hi-IN", "persona": "Professional"},
+      {"name": "Jwala", "gender": "Female", "preferred_language": "hi-IN", "persona": "Friendly"},
+      {"name": "Chitra", "gender": "Female", "preferred_language": "hi-IN", "persona": "Warm"},
+      {"name": "Ambuja", "gender": "Female", "preferred_language": "hi-IN", "persona": "Professional"},
+      {"name": "Deepak", "gender": "Male", "preferred_language": "hi-IN", "persona": "Professional"},
+      {"name": "Roopesh", "gender": "Male", "preferred_language": "hi-IN", "persona": "Professional"},
+      {"name": "Vikrant", "gender": "Male", "preferred_language": "hi-IN", "persona": "Conversational"},
+      {"name": "Hemraj", "gender": "Male", "preferred_language": "hi-IN", "persona": "Confident"},
+      {"name": "Jalaj", "gender": "Male", "preferred_language": "hi-IN", "persona": "Expressive"},
+      {"name": "Omkar", "gender": "Male", "preferred_language": "hi-IN", "persona": "Confident"},
+      {"name": "Poorvi", "gender": "Female", "preferred_language": "hi-en", "persona": "Conversational"},
+      {"name": "Asmita", "gender": "Female", "preferred_language": "ta-IN", "persona": "Professional"},
+      {"name": "Trisha", "gender": "Female", "preferred_language": "ta-IN", "persona": "Friendly"},
+      {"name": "Brinda", "gender": "Female", "preferred_language": "ta-IN", "persona": "Professional"},
+      {"name": "Vedika", "gender": "Female", "preferred_language": "ta-IN", "persona": "Professional"},
+      {"name": "Noopur", "gender": "Female", "preferred_language": "ta-IN", "persona": "Friendly"},
+      {"name": "Suhana", "gender": "Female", "preferred_language": "te-IN", "persona": "Warm"},
+      {"name": "Lehara", "gender": "Female", "preferred_language": "te-IN", "persona": "Warm"},
+      {"name": "Lavanya", "gender": "Female", "preferred_language": "te-IN", "persona": "Warm"},
+      {"name": "Yukti", "gender": "Female", "preferred_language": "te-IN", "persona": "Friendly"},
+      {"name": "Varuni", "gender": "Female", "preferred_language": "te-IN", "persona": "Conversational"},
+      {"name": "Saanvi", "gender": "Female", "preferred_language": "kn-IN", "persona": "Expressive"},
+      {"name": "Kavin", "gender": "Male", "preferred_language": "kn-IN", "persona": "Professional"},
+      {"name": "Reshma", "gender": "Female", "preferred_language": "ml-IN", "persona": "Friendly"},
+      {"name": "Riyaan", "gender": "Male", "preferred_language": "ml-IN", "persona": "Conversational"},
+      {"name": "Zahira", "gender": "Female", "preferred_language": "mr-IN", "persona": "Expressive"},
+      {"name": "Ishaan", "gender": "Male", "preferred_language": "mr-IN", "persona": "Professional"},
+      {"name": "Kirra", "gender": "Female", "preferred_language": "bn-IN", "persona": "Conversational"},
+      {"name": "Dhruva", "gender": "Male", "preferred_language": "bn-IN", "persona": "Conversational"},
+      {"name": "Falak", "gender": "Female", "preferred_language": "gu-IN", "persona": "Conversational"},
+      {"name": "Veera", "gender": "Male", "preferred_language": "gu-IN", "persona": "Friendly"},
+      {"name": "Mehuli", "gender": "Female", "preferred_language": "pa-IN", "persona": "Expressive"},
+      {"name": "Zayan", "gender": "Male", "preferred_language": "pa-IN", "persona": "Warm"}
+    ],
+    "voices_v3_0": [
+      {"name": "Avinash", "gender": "Male", "persona": "Professional"},
+      {"name": "Chetana", "gender": "Female", "persona": "Warm"},
+      {"name": "Devansh", "gender": "Male", "persona": "Conversational"},
+      {"name": "Kalpana", "gender": "Female", "persona": "Warm"},
+      {"name": "Lakshmi", "gender": "Female", "persona": "Expressive"},
+      {"name": "Prakash", "gender": "Male", "persona": "Professional"},
+      {"name": "Riyaa", "gender": "Female", "persona": "Confident"},
+      {"name": "Shivani", "gender": "Female", "persona": "Warm"},
+      {"name": "Shubham", "gender": "Male", "persona": "Expressive"},
+      {"name": "Tarika", "gender": "Female", "persona": "Warm"},
+      {"name": "Vasudha", "gender": "Female", "persona": "Expressive"},
+      {"name": "Yashraj", "gender": "Male", "persona": "Warm"},
+      {"name": "Harshad", "gender": "Male", "persona": "Professional"}
+    ],
+    "all_language_codes": [
+      "hi-IN",
+      "en-IN",
+      "ta-IN",
+      "te-IN",
+      "kn-IN",
+      "ml-IN",
+      "mr-IN",
+      "pa-IN",
+      "bn-IN",
+      "gu-IN"
+    ]
+  }
+}

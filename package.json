@@ -1,0 +1,16 @@
+{
+  "name": "kuralcredit",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Voice-first multilingual loan application clarification and evidence preparation",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "npm --workspace frontend run dev",
+    "build": "npm --workspace frontend run build",
+    "typecheck": "npm --workspace frontend run typecheck",
+    "test": "npm --workspace frontend run test",
+    "lint": "npm --workspace frontend run lint"
+  }
+}

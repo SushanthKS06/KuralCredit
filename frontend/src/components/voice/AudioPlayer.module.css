@@ -1,0 +1,51 @@
+.playerContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-2);
+}
+
+.playBtn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.playBtn:hover {
+  background: var(--primary-hover);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.status {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.errorText {
+  flex-basis: 100%;
+  font-size: var(--text-xs);
+  color: var(--color-danger-700);
+}
+
+.audioElement {
+  display: none;
+}
+

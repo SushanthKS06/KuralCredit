@@ -1,0 +1,56 @@
+.uploadCard {
+  border: 2px dashed var(--border-default);
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition-normal), background-color var(--transition-normal);
+}
+
+.uploadCard:hover {
+  border-color: var(--color-brand-500);
+  background: var(--color-brand-50);
+}
+
+.icon {
+  font-size: 36px;
+}
+
+.title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.typeRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.typeSelect {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  background: var(--surface-card);
+  color: var(--text-primary);
+}
+
+.fileInput {
+  display: none;
+}
