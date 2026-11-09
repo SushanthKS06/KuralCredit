@@ -4,7 +4,6 @@
 >
 > A multilingual, AI-assisted platform that helps MSMEs clarify loan applications through natural speech, document-backed facts, and transparent human review.
 
-[![CI](https://github.com/kuralcredit/kuralcredit/actions/workflows/ci.yml/badge.svg)](https://github.com/kuralcredit/kuralcredit/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/UI-React%2019-61DAFB?logo=react&logoColor=20232A)
