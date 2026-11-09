@@ -1,216 +1,361 @@
 # KuralCredit
 
-> **"Speak naturally. Clarify confidently. Submit an evidence-backed application."**
+> **Voice-first intake. Structured evidence. Human-controlled decisions.**
+>
+> A multilingual, AI-assisted platform that helps MSMEs clarify loan applications through natural speech, document-backed facts, and transparent human review.
 
-[![CI](https://github.com/kuralcredit/kuralcredit/actions/workflows/ci.yml/badge.svg)](https://github.com/kuralcredit/kuralcredit/actions)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/backend-FastAPI-009688.svg)](https://fastapi.tiangolo.com/)
-[![React](https://img.shields.io/badge/frontend-React%2019-61DAFB.svg)](https://react.dev/)
-[![Speech](https://img.shields.io/badge/speech-Gnani%20Prisma%20%2B%20Timbre-orange.svg)](https://vachana.ai/)
-[![Reasoning](https://img.shields.io/badge/reasoning-Groq%20GPT--OSS%20120B-f55036.svg)](https://groq.com/)
-
----
-
-## 1. What is KuralCredit?
-
-**KuralCredit** is a configurable, multilingual voice workflow platform. Originally built to clarify MSME loan applications across Indian languages (Tamil, Tanglish, Hindi, English), the platform now features a **reusable, data-driven voice workflow engine** that orchestrates conversational intake, structured candidate fact extraction, deterministic domain rule evaluation, and evidence preparation for human review.
-
-The platform includes two fully functional, end-to-end workflows:
-1. **`loan_application` (Reference Workflow)**: Multilingual MSME loan clarification, turnover declaration, and reconciliation against bank statements and GST records.
-2. **`customer_support_intake` (Demonstration Workflow)**: Cross-domain support ticket and triage workflow demonstrating engine reusability without changing conversation or provider code.
-
-Core Platform Capabilities:
-1. **Transcribes Spoken Declarations**: Using **Gnani Prisma STT**, applicants and users speak naturally in vernacular languages.
-2. **Interactive Transcript Confirmation**: Users inspect and correct transcripts before fact extraction.
-3. **Structured Candidate Fact Extraction**: Using **Groq-hosted `openai/gpt-oss-120b`**, candidate fields are parsed into strict Pydantic schemas.
-4. **Deterministic Accounting Arithmetic**: Python `Decimal` handles Indian numbering scales (`18 lakh`, `1.5 crore`) and period matching. Floats are prohibited in monetary calculations.
-5. **Neutral Variance Clarification**: Differences between declared revenue and bank deposits are flagged neutrally. **Gnani Timbre TTS** speaks follow-up questions to understand cash counter sales or owner transfers.
-6. **Evidence-Backed Human Review Packet**: Compiles an auditable evidence packet with cryptographic SHA-256 hashes for human reviewers.
+[![CI](https://github.com/kuralcredit/kuralcredit/actions/workflows/ci.yml/badge.svg)](https://github.com/kuralcredit/kuralcredit/actions/workflows/ci.yml)
+![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/API-FastAPI-009688?logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/UI-React%2019-61DAFB?logo=react&logoColor=20232A)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ---
 
-## 2. Hard Non-Goals & System Boundaries
+## The Problem
 
-### Current verification status
+For many small businesses, applying for credit means translating everyday business activity into formal financial information.
 
-- **Live Provider Integration**: Real authenticated requests were executed and **PASSED** for Gnani Prisma STT, Gnani Timbre TTS, and Groq GPT-OSS 120B reasoning (`python scripts/run_provider_smoke_tests.py --live`).
-- **Offline Deterministic Verification**: 56 backend tests, 18 frontend tests, and 135 AI evaluation vectors **100% PASS**.
-- **Provider Mode Integrity**: The platform supports both `PROVIDER_MODE=real` (fails closed on upstream errors) and `PROVIDER_MODE=mock` (deterministic local fakes clearly labeled in UI and API). See [`docs/READINESS_REPORT.md`](docs/READINESS_REPORT.md).
+Revenue may be described in local languages, records may be spread across bank statements and GST summaries, and apparent differences often need context—not assumptions.
 
-KuralCredit is **NOT**:
-- A lender, loan originator, credit bureau, or underwriting engine.
-- A credit scoring, eligibility, approval, rejection, or risk-pricing system.
-- A fraud detector.
-- A system that assumes bank credits equal revenue.
-- A system that invents missing financial values.
-- An autonomous agent allowed to disburse loans or make binding credit decisions.
+KuralCredit is designed to make that clarification process more accessible and auditable.
 
-All final decisions require human review.
+## What It Does
+
+KuralCredit combines speech interfaces, structured extraction, deterministic validation, and evidence provenance in one review-oriented workflow:
+
+1. **Speak naturally** — capture an applicant's declaration through the browser.
+2. **Transcribe and confirm** — use Gnani Prisma STT, then let the applicant review and correct the transcript.
+3. **Extract candidate facts** — use Groq-hosted `openai/gpt-oss-120b` to map confirmed text into a typed workflow schema.
+4. **Validate deterministically** — normalize Indian monetary expressions with Python `Decimal`; apply explicit domain rules rather than asking an LLM to perform financial arithmetic.
+5. **Clarify differences** — identify missing or inconsistent evidence in neutral language and generate follow-up questions; Gnani Timbre TTS can speak those questions.
+6. **Prepare for review** — organize declared facts, document-derived values, provenance, and audit history into a reviewer-facing application record.
+
+## Built-in Workflows
+
+| Workflow | Purpose | Example Information Captured |
+|---|---|---|
+| `loan_application` | Reference workflow for MSME loan clarification | Business context, sales declarations, GST turnover, bank credits, supporting records |
+| `customer_support_intake` | Second workflow demonstrating reuse of the conversation pipeline | Customer issue, affected product/service, urgency, contact preference, troubleshooting steps |
+
+The customer-support workflow is exercised through the same conversation and review pipeline.
+
+These are the two workflows currently bundled with the application; this repository is **not** a no-code workflow builder. Adding another workflow currently involves defining and registering it in the codebase, and implementing an approved rule plugin when domain-specific logic is required.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[React voice and review UI] --> B[FastAPI application]
+    B --> C[Workflow registry and conversation services]
+    C --> D[Provider interfaces]
+    D --> E[Gnani Prisma STT]
+    D --> F[Groq structured extraction]
+    D --> G[Gnani Timbre TTS]
+    C --> H[Deterministic domain rules]
+    C --> I[Document parsers and evidence provenance]
+    H --> J[(SQLAlchemy persistence)]
+    I --> J
+    C --> J
+    J --> K[Human reviewer workspace]
+```
+
+### Engineering Principles
+
+- **Provider isolation:** STT, TTS, and reasoning are accessed through provider interfaces.
+- **Explicit execution modes:** `real` calls configured providers; `mock` uses deterministic local adapters for offline development and demos. Real mode does not silently fall back to mocks.
+- **Structured extraction:** Model output is validated against typed schemas before application logic consumes it.
+- **Deterministic financial logic:** Monetary handling uses `Decimal`; LLM output is treated as a candidate, not verified truth.
+- **Evidence provenance:** Facts retain their source and review state so declarations, document values, and system-derived values remain distinguishable.
+- **Human authority:** The system prepares information for authorized people; it does not make lending decisions.
+
+## Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| Backend API | Python 3.11+, FastAPI, Pydantic v2, SQLAlchemy 2, Alembic |
+| Speech AI | Gnani Prisma STT, Gnani Timbre TTS |
+| Reasoning | Groq API, `openai/gpt-oss-120b`, structured output validation |
+| Documents | CSV, PDF, and XLSX parsing with Python libraries |
+| Frontend | React 19, TypeScript, Vite, CSS Modules |
+| Persistence | SQLAlchemy; SQLite by default, configurable through `DATABASE_URL` |
+| Testing | pytest, Vitest, ESLint, Ruff, deterministic evaluation scripts |
 
 ---
 
-## 3. Technology Stack
-
-- **Backend**: Python 3.12+, FastAPI, Pydantic v2, SQLAlchemy 2, Alembic, SQLite / PostgreSQL.
-- **Speech AI**: Gnani Prisma STT (`POST /stt/v3`) & Gnani Timbre TTS (`POST /api/v1/tts/inference`).
-- **Language Reasoning**: Groq `openai/gpt-oss-120b` with strict Pydantic JSON schema output.
-- **Document Ingestion**: Python `csv`, `openpyxl` (XLSX), and `pypdf` / `reportlab` (PDF).
-- **Frontend**: React 19, TypeScript, Vite, Modular CSS (`.module.css`). Zero Tailwind dependency.
-- **Audio Capture**: Browser `MediaRecorder` with client-side 16kHz mono 16-bit PCM WAV encoding.
-
----
-
-## 4. Quickstart & Installation
+## Getting Started
 
 ### Prerequisites
-- Python 3.11+ or 3.12 (Python 3.12 recommended)
-- Node.js 18+ and npm
-- `uv` package manager (optional, but recommended)
 
-### 1. Clone & Set Up Environment
+- Python **3.11+** (3.12 recommended)
+- Node.js **20+** and npm
+- Gnani and Groq API credentials for real provider mode
+
+### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/kuralcredit/kuralcredit.git
 cd KuralCredit
 
-# Copy example environment configuration
-cp .env.example .env
-
-# For an offline demo without provider keys, set:
-# PROVIDER_MODE=mock
+python -m venv .venv
 ```
 
-### 2. Install Dependencies
-```bash
-# Set up Python virtual environment
-python -m venv .venv
+Activate the environment:
 
-# On Windows:
-.venv\Scripts\activate
-# On Linux/macOS:
+```bash
+# macOS / Linux
 source .venv/bin/activate
 
-# Install backend dependencies
-pip install -e "backend[dev]"
-
-# Install frontend dependencies
-npm --prefix frontend install
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
 ```
 
-### 3. Verify Configuration
-Run the automated configuration check to verify upload directories, database, and settings:
+### 2. Configure Environment Variables
+
+Create a local environment file:
+
+```bash
+# macOS / Linux
+cp .env.example .env
+
+# Windows PowerShell
+Copy-Item .env.example .env
+```
+
+Edit `.env` locally.
+
+**Never commit `.env` or expose API keys in source files.**
+
+For an offline demo:
+
+```dotenv
+APP_ENV=development
+PROVIDER_MODE=mock
+```
+
+For real provider calls:
+
+```dotenv
+APP_ENV=development
+PROVIDER_MODE=real
+GNANI_API_KEY=<your-gnani-api-key>
+GROQ_API_KEY=<your-groq-api-key>
+```
+
+Keep provider credentials on the backend. Configure a strong, unique `SECRET_KEY` and reviewer credentials before exposing the reviewer portal.
+
+### 3. Install Dependencies
+
+```bash
+# Backend
+python -m pip install --upgrade pip
+pip install -e "backend[dev]"
+
+# Frontend
+npm ci
+```
+
+### 4. Verify Configuration
+
 ```bash
 python scripts/check_config.py
 ```
 
-### 4. Build Synthetic Documents
+This checks local settings, the upload directory, and database connectivity.
+
+It does **not** prove that external AI providers are reachable.
+
+### 5. Build the Frontend
+
 ```bash
-# Generate synthetic bank statements, GST summaries, and sales registers
-python scripts/create_synthetic_documents.py
+npm run build
 ```
 
-### 5. Build Frontend
-```bash
-npm --prefix frontend run build
-```
+### 6. Start the Application
 
-### 6. Run the Application
-Start the FastAPI server (it automatically serves the React UI and API endpoints):
 ```bash
 python -m uvicorn app.main:app --app-dir backend --host 127.0.0.1 --port 8000 --reload
 ```
-Open your browser at **`http://127.0.0.1:8000`**.
 
----
+Open:
 
-## 5. Reviewer Access
+**http://127.0.0.1:8000**
 
-- **Applicant Experience**: Open `http://127.0.0.1:8000` and click *"Start New Application"*.
-- **Reviewer Portal**: Navigate to `/reviewer/login`.
-  - **Email**: `reviewer@kuralcredit.demo`
-  - **Password**: `test-reviewer-password`
+Interactive API documentation:
 
----
+**http://127.0.0.1:8000/docs**
 
-## 6. Provider Verification & Testing
+### Frontend Development Mode
 
-### Running Tests
+For hot reload, keep the backend running on port `8000` and start Vite in another terminal:
+
 ```bash
-.venv\Scripts\python.exe -m pytest backend/tests -q
-npm --prefix frontend run lint
-npm --prefix frontend run test -- --run
-npm --prefix frontend run build
+npm run dev
 ```
 
-### Running Deterministic Evaluation
+Open **http://localhost:5173**.
+
+Vite proxies `/api` requests to the backend.
+
+### Docker
+
+After creating and configuring `.env`:
+
 ```bash
-# Offline rules and explicit mock-adapter benchmark; no external calls
-.venv\Scripts\python.exe scripts/run_evaluation.py
+docker compose up --build
 ```
 
-### Running Live Provider Smoke Tests (Opt-In)
-The smoke runner makes no external calls by default. After rotating the
-exposed credentials and setting `PROVIDER_MODE=real`:
-```bash
-.venv\Scripts\python.exe scripts/run_provider_smoke_tests.py --live
-```
-Without `--live`, or in mock mode, it reports `BLOCKED` and exits non-zero
-instead of claiming a provider was verified.
+Open **http://localhost:8080**.
 
-### Verify Submission Readiness
-```bash
-# Full check, including frontend lint/tests/build and the secret scan
-.venv\Scripts\python.exe scripts/verify_submission.py
+Stop the stack:
 
-# Backend-only CI mode
-.venv\Scripts\python.exe scripts/verify_submission.py --skip-frontend
+```bash
+docker compose down
 ```
 
 ---
 
-## 7. Configuration Reference (`.env`)
+## Provider Modes and Verification
 
-| Variable | Description | Default |
+KuralCredit supports two explicit provider modes:
+
+| Mode | Behavior | Intended Use |
 |---|---|---|
-| `APP_ENV` | Application environment (`development` / `production`) | `development` |
-| `PROVIDER_MODE` | Real provider calls or explicit labelled mock/demo mode | `real` |
-| `DATABASE_URL` | SQLAlchemy connection string | `sqlite:///./kuralcredit.db` |
-| `GNANI_API_KEY` | Gnani API key for Prisma STT and Timbre TTS | Backend only |
-| `GNANI_API_BASE_URL` | Gnani API gateway host | `https://api.vachana.ai` |
-| `GNANI_STT_MODEL` | Prisma STT model identifier | `prisma-v3.0` |
-| `GNANI_TTS_MODEL` | Timbre TTS model identifier | `timbre-v2.5` |
-| `GROQ_API_KEY` | Groq API Key | Backend only |
-| `GROQ_MODEL` | Model ID for language reasoning | `openai/gpt-oss-120b` |
-| `LOG_REDACT_PII` | Enables redaction of sensitive identifiers in logs | `true` |
-| `AUDIO_RETENTION_ENABLED` | Persist uploaded audio when explicitly enabled | `false` |
+| `real` | Uses Gnani STT/TTS and Groq reasoning adapters. Provider or credential failures surface as errors; no mock fallback is presented as a real response. | Live integration and demonstrations with valid credentials |
+| `mock` | Uses deterministic local speech/reasoning adapters. Outputs are demo/test data, not provider-generated results. | Offline development, automated tests, and rehearsals |
 
-Mock mode requires no provider keys and is rejected when `APP_ENV=production`.
-Never commit `.env`; rotate any credential that has been exposed.
+Run live provider smoke tests only when valid credentials are configured and you intend to make real external API calls:
+
+```bash
+python scripts/run_provider_smoke_tests.py --live
+```
+
+The runner checks:
+
+- Gnani Prisma STT
+- Gnani Timbre TTS
+- Groq reasoning
+
+It reports `PASS`, `FAIL`, or `BLOCKED`.
+
+The smoke runner is separate from the offline test suite. A passing unit test or deterministic benchmark does **not** prove live provider connectivity.
+
+Re-run the smoke tests in the environment used for the demonstration and retain the actual output as verification evidence.
+
+## Testing and Quality Checks
+
+### Backend
+
+```bash
+python -m ruff check backend scripts
+python -m pytest backend/tests -q
+python scripts/run_evaluation.py
+```
+
+### Frontend
+
+```bash
+npm --workspace frontend run lint
+npm --workspace frontend run typecheck
+npm --workspace frontend run test -- --run
+npm --workspace frontend run build
+```
+
+### Submission Readiness
+
+```bash
+python scripts/verify_submission.py
+```
+
+The readiness verifier covers local checks and secret scanning. It does **not** make live Gnani or Groq API calls.
+
+The deterministic evaluation benchmark tests parsing, rules, safety checks, and explicit mock-adapter behavior. Its score must not be interpreted as live LLM accuracy.
+
+### Create a Clean Release
+
+```bash
+python scripts/package_submission.py
+```
+
+The allowlist-based packager generates:
+
+```text
+release/KuralCredit_Source_Release.zip
+```
+
+It also generates release manifests.
+
+Review the generated archive before sharing it. Rotate any credential that has ever been exposed, even if the file containing it has since been removed.
 
 ---
 
-## 8. Documentation Directory
+## API Surface
 
-Detailed architectural specifications, evaluation benchmarks, and integration guides are available in `docs/`:
-- [`docs/BASELINE_AUDIT.md`](docs/BASELINE_AUDIT.md): Inventory audit, environment constraints, and defect register.
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md): Generic voice workflow platform architecture and layer separation.
-- [`docs/WORKFLOW_AUTHORING.md`](docs/WORKFLOW_AUTHORING.md): Step-by-step guide to authoring new schemas, questions, and plugins.
-- [`docs/PROVIDER_VERIFICATION.md`](docs/PROVIDER_VERIFICATION.md): Upstream Gnani and Groq live verification evidence and latencies.
-- [`docs/TESTING.md`](docs/TESTING.md): Testing tiers, commands, and verification procedures.
-- [`docs/PRODUCT_REQUIREMENTS.md`](docs/PRODUCT_REQUIREMENTS.md): User personas, functional requirements, and product boundaries.
-- [`docs/SYSTEM_ARCHITECTURE.md`](docs/SYSTEM_ARCHITECTURE.md): Component diagrams, trust boundaries, and modular separation.
-- [`docs/DATA_FLOW.md`](docs/DATA_FLOW.md): Sequence diagram and fact provenance states.
-- [`docs/API_CONTRACTS.md`](docs/API_CONTRACTS.md): Full REST API contract examples.
-- [`docs/SECURITY_AND_PRIVACY.md`](docs/SECURITY_AND_PRIVACY.md): Data minimization, redaction, and prompt injection defense.
-- [`docs/AI_EVALUATION.md`](docs/AI_EVALUATION.md): Deterministic benchmark results and live-provider limitations.
-- [`docs/READINESS_REPORT.md`](docs/READINESS_REPORT.md): Comprehensive readiness report and defect register.
-- [`docs/GNANI_INTEGRATION.md`](docs/GNANI_INTEGRATION.md): Prisma STT and Timbre TTS request/response specifications.
-- [`docs/GROQ_INTEGRATION.md`](docs/GROQ_INTEGRATION.md): Groq GPT-OSS 120B structured output configuration.
-- [`docs/DEMO_SCRIPT.md`](docs/DEMO_SCRIPT.md): Step-by-step 3-minute hackathon demo script.
-- [`docs/HACKATHON_SUBMISSION.md`](docs/HACKATHON_SUBMISSION.md): Submission checklist and interview talking points.
-- [`docs/ADR/`](docs/ADR/): Architecture Decision Records (Monolith first, Provider adapters, Human review boundary).
+The API is versioned under `/api/v1`.
 
----
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/v1/health` | Application health |
+| `GET /api/v1/health/ready` | Readiness status |
+| `GET /api/v1/capabilities` | Configured speech/provider capabilities |
+| `GET /api/v1/workflows` | List bundled workflows |
+| `GET /api/v1/workflows/{workflow_id}` | Retrieve a workflow definition |
+| `POST /api/v1/workflows/validate` | Validate a workflow definition |
+| `POST /api/v1/speech/transcribe` | Transcribe uploaded audio |
+| `POST /api/v1/speech/synthesize` | Synthesize speech |
 
-## 9. License
-MIT License. See [LICENSE](LICENSE) for details.
+Explore the complete API through the interactive OpenAPI documentation at `/docs`.
 
+## Responsible AI and Human Review
+
+KuralCredit is an **application clarification and evidence-preparation tool**.
+
+It is not a lender, credit bureau, underwriting engine, or fraud detector. It does not produce credit scores or automatically approve or reject applications.
+
+Key safeguards:
+
+- Bank credits are not automatically assumed to be revenue.
+- Missing financial values are not invented.
+- Discrepancies are presented as items requiring context, not proof of fraud.
+- Extracted facts remain subject to applicant correction and authorized human review.
+- Consequential lending decisions remain with authorized human reviewers.
+- Use synthetic records for demonstrations. Do not upload real applicant or financial data into an unapproved environment.
+
+## Repository Structure
+
+```text
+backend/
+  app/
+    api/                 Versioned FastAPI routes
+    core/                Settings, security, lifecycle, logging
+    domain/              Financial primitives, provenance, workflow schemas
+    document_parsers/    CSV, PDF, and XLSX parsers
+    providers/           Gnani, Groq, and explicit mock adapters
+    services/            Conversation, extraction, evidence, review services
+    models/              SQLAlchemy models
+  tests/                 Backend unit and integration tests
+
+frontend/
+  src/
+    components/          Voice, application, document, and reviewer UI
+    pages/               Applicant and reviewer pages
+    hooks/               API/query and recording hooks
+
+scripts/                  Verification, evaluation, and release tooling
+docs/                     Architecture, API, security, and integration guides
+```
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [System Architecture](docs/SYSTEM_ARCHITECTURE.md)
+- [API Contracts](docs/API_CONTRACTS.md)
+- [Gnani Integration](docs/GNANI_INTEGRATION.md)
+- [Groq Integration](docs/GROQ_INTEGRATION.md)
+- [Security and Privacy](docs/SECURITY_AND_PRIVACY.md)
+- [AI Evaluation Methodology and Limitations](docs/AI_EVALUATION.md)
+- [Demo Script](docs/DEMO_SCRIPT.md)
+
+## License
+
+Released under the [MIT License](LICENSE).
